@@ -24,16 +24,31 @@ if [ ! -d "$ORIGIN" ] ; then
   exit 1
 fi
 
-function file_copy {
-  for file in "${TARGET_FILES[@]}" ; do
+function create_dir {
     if [ ! -d "$TARGET_DIR" ] ; then
       mkdir -p "$TARGET_DIR"
+      if [ $? -ne 0 ] ; then
+        echo "ERROR: Cannot create directory: ${TARGET_DIR}"
+        exit 1
+      fi
     fi
+}
+
+function file_copy {
+  for file in "${TARGET_FILES[@]}" ; do
+    create_dir
     orig_path=$file
-    filename=`echo $orig_path | awk '{split($1, ary, "\/"); print ary[length(ary)]}'`
+    ext=`echo $orig_path | awk '{split($1, ary, "\."); print ary[length(ary)]}'`
+    timestamp=`date -r $file "+%Y-%m-%d_%H%M%S"`
+    rand=`echo $RANDOM | awk '{print substr($1, 1, 3)}'`
+    filename=${timestamp}_${rand}.${ext}
     dest_path=$TARGET_DIR/$filename
     echo "Copying $orig_path to $dest_path"
     cp "$orig_path" "$dest_path"
+    if [ $? -ne 0 ] ; then
+      echo "ERROR: Cannot create target file: ${dest_path}"
+      exit 1
+    fi
   done
 }
 
