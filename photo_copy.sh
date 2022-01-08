@@ -1,16 +1,26 @@
 #/bin/bash
+#
+# 写真ファイルをカメラや外部ストレージからコピーするスクリプト
+#   photo_copy.sh コピー元ディレクトリ(オプション)
+# 設定ファイル
+#   photo_copy.conf
 
-ORIGIN=/Volumes/Untitled/DCIM/100OLYMP
-JPEG_DIR=/Volumes/USB-HD-1TB/Media/Photo/2021
-RAW_DIR=/Volumes/USB-HD-1TB/Media/PhotoRaw/2021
-VIDEO_DIR=/Volumes/USB-HD-1TB/Media/Video/2021
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+CONF_FILE="${SCRIPT_DIR}/photo_copy.conf"
+
+if [ -f $CONF_FILE ] ; then
+  source $CONF_FILE
+else
+  echo "[`date +'%Y-%m-%d %H:%M:%S'`] ERROR: File not found: ${CONF_FILE}" 1>&2
+  exit 1
+fi
 
 if [ "$1" != "" ] ; then
   ORIGIN=$1
 fi
 
 if [ ! -d "$ORIGIN" ] ; then
-  echo "WARNING: Camera drive is NOT mounted."
+  echo "WARNING: Camera drive is NOT mounted." 1>&2
   exit 1
 fi
 
