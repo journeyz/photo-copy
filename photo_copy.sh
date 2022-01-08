@@ -63,7 +63,7 @@ for date in `ls -lTtr $ORIGIN | grep rw | awk '{printf("%02d-%02d-%02d\n", $9, $
   file_copy
 
   # RAW Files
-  TARGET_FILES=(`ls -lTtr $ORIGIN/*{ORF,CR2,CR3} 2> /dev/null | awk '{print $6 " " $7 " " $9 " " $10}' | grep "$month $day $year" | awk '{print $4}'`)
+  TARGET_FILES=(`ls -lTtr $ORIGIN/*{ORF,CR2,CR3,ARW,CRW,TIF,NEF,NRW,RAF,RW2,DNG,PEF,BAY,RWL,X3F} 2> /dev/null | awk '{print $6 " " $7 " " $9 " " $10}' | grep "$month $day $year" | awk '{print $4}'`)
   TARGET_DIR=$RAW_DIR/${date}
   file_copy
 
