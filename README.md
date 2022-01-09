@@ -12,6 +12,7 @@ Photo Copy
 # Requirement
 - Bashが動作するコマンドライン環境
 - 作者は Mac mini (Intel版)で動作確認
+- Windowsの場合はアプリストアで Ubuntu をインストールすれば利用可能になるはずです。チャレンジしてみた方は教えて下さい。
 
 # Installation
 - photo_copy.sh, photo_copy.conf を　`~/bin` ディレクトリにコピーする
