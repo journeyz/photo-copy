@@ -43,6 +43,13 @@ photo_copy.sh
 ```
 photo_copy.sh /Volumes/hoge/fuga
 ```
+- 実行例
+```
+$ photo_copy.sh 
+Copying /Volumes/Untitled/DCIM/100OLYMP/P1080001.JPG to /Volumes/USB-HD-1TB/Media/Photo/2022/2022-01-08/2022-01-08_172926_949.JPG
+Copying /Volumes/Untitled/DCIM/100OLYMP/P1080001.ORF to /Volumes/USB-HD-1TB/Media/PhotoRaw/2022/2022-01-08/2022-01-08_172926_317.ORF
+Image file copying finished.
+```
 
 # Author
 - 作成者:　山田順二 / YAMADA Junji
