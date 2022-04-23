@@ -6,8 +6,8 @@ Photo Copy
 - デジタルカメラの写真・動画ファイルをコンピュータにコピーする
 - JPEGファイル、RAWファイル、動画ファイルをそれぞれ指定のフォルダに振り分ける
 - ファイル種類別フォルダの中に日付フォルダを作成する
-- ファイル名は、年月日時分秒＋ランダムな3桁の数字＋拡張子。
-- 例 `/Photo/2022/2022-01-08/2022-01-08_172926_949.JPG`
+- ファイル名は、年月日時分秒＋元ファイル名の連番部分3桁＋拡張子。
+- 例 `/Photo/2022/2022-01-08/2022-01-08_172926_001.JPG`
 
 # Requirement
 - Bashが動作するコマンドライン環境
@@ -15,7 +15,7 @@ Photo Copy
 - Windowsの場合はアプリストアで Ubuntu をインストールすれば利用可能になるはずです。チャレンジしてみた方は教えて下さい。
 
 # Installation
-- photo_copy.sh, photo_copy.conf を　`~/bin` ディレクトリにコピーする
+- photo_copy.sh, photo_copy.conf を `~/bin` ディレクトリにコピーする
 - photo_copy.sh に実行パーミッションを付与する
 ```
 $ chmod +x ~/bin/photo_copy.sh
@@ -47,14 +47,14 @@ photo_copy.sh /Volumes/hoge/fuga
 ```
 - 実行例
 ```
-$ photo_copy.sh 
+$ photo_copy.sh
 Copying /Volumes/Untitled/DCIM/100OLYMP/P1080001.JPG to /Volumes/USB-HD-1TB/Media/Photo/2022/2022-01-08/2022-01-08_172926_949.JPG
 Copying /Volumes/Untitled/DCIM/100OLYMP/P1080001.ORF to /Volumes/USB-HD-1TB/Media/PhotoRaw/2022/2022-01-08/2022-01-08_172926_317.ORF
 Image file copying finished.
 ```
 
 # Author
-- 作成者:　山田順二 / YAMADA Junji
+- 作成者: 山田順二 / YAMADA Junji
 - 所属: フリーランスITエンジニア
 - E-mail: junji[at]junyx.net (Replace [at] with @)
 
