@@ -38,10 +38,11 @@ function file_copy {
   for file in "${TARGET_FILES[@]}" ; do
     create_dir
     orig_path=$file
-    ext=`echo $orig_path | awk '{split($1, ary, "\."); print ary[length(ary)]}'`
+    orig_filename=`echo $orig_path | awk '{split($1, ary, "\/"); print ary[length(ary)]}'`
+    num=`echo $orig_filename | awk '{split($1, ary, "\."); trunk=ary[length(ary)-1]; print substr(trunk,length(trunk)-2,3)}'`
+    ext=`echo $orig_filename | awk '{split($1, ary, "\."); print ary[length(ary)]}'`
     timestamp=`date -r $file "+%Y-%m-%d_%H%M%S"`
-    rand=`echo $RANDOM | awk '{print substr($1, 1, 3)}'`
-    filename=${timestamp}_${rand}.${ext}
+    filename=${timestamp}_${num}.${ext}
     dest_path=$TARGET_DIR/$filename
     echo "Copying $orig_path to $dest_path"
     cp "$orig_path" "$dest_path"
