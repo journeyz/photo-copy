@@ -20,8 +20,12 @@ if [ "$1" != "" ] ; then
 fi
 
 if [ ! -d "$ORIGIN" ] ; then
-  echo "WARNING: Camera drive is NOT mounted." 1>&2
-  exit 1
+  if [ ! -d "$ORIGIN2" ] ; then
+    echo "WARNING: Camera drive is NOT mounted." 1>&2
+    exit 1
+  else
+    ORIGIN="$ORIGIN2"
+  fi
 fi
 
 function create_dir {
