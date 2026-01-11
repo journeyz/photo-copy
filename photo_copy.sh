@@ -59,7 +59,7 @@ function file_copy {
 
 for date in `ls -lTtr "$ORIGIN" | grep rw | awk '{printf("%02d-%02d-%02d\n", $9, $6, $7);}' | sort | uniq` ; do
   year=`echo $date | awk '{split($1, ary, "-"); printf("%d",ary[1])}'`
-  month=`echo $date | awk '{split($1, ary, "-"); printf("%d",ary[2])}'`
+  month=`echo $date | awk '{split($1, ary, "-"); printf("%d月",ary[2])}'`
   day=`echo $date | awk '{split($1, ary, "-"); printf("%d",ary[3])}'`
 
   # JPEG Files
